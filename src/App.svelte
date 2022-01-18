@@ -30,32 +30,4 @@
 	</main>
 </Router>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-	nav{
-		margin-left: 46%;
-	}
-
-	.link{
-		margin-left: 5%;
-	}
-	
-	h1 {
-		color: black;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-		margin-left: 37%;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<link rel="stylesheet" href="global.css">
