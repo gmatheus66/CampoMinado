@@ -109,11 +109,27 @@
 </table>
 
 <style>
+  h2 {
+	color: #fff;
+  }
   table {
-    margin-left: 45%;
+   position: absolute;
+   margin-left: 35%;
+   bottom: 5%;
+   background-color: rgb(31, 31, 31);
+   border-radius: 5px;
+   padding: 5px;
+   border: 2px solid #5fe36a;
   }
 
   td {
-    border-style: solid;
+   background-color: #fff;
+   width: 25px;
+   height: 35px;
+   font-size: 25px;
+   cursor: pointer;
+   border: none;
+   color: rgb(31, 31, 31);
+   text-align: center;
   }
 </style>
