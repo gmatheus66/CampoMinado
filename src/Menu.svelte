@@ -1,5 +1,5 @@
 <svelte:head>
-	<link rel="stylesheet" href="/styles/menu.css">
+	<link rel="stylesheet" href="/styles/global.css">
 </svelte:head>
 
 <script>
