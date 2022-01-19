@@ -2,6 +2,7 @@
   import { library } from '@fortawesome/fontawesome-svg-core';
   import { faBomb } from '@fortawesome/free-solid-svg-icons';
   import { FontAwesomeIcon} from 'fontawesome-svelte';
+  // import { goto } from '@sapper/app';
 
   library.add(faBomb);
   const casas = 10;
@@ -10,6 +11,8 @@
   let dadCells;
   let bombs;
 
+  let loser = false;
+  let win = false;
 
   let init = () => {
     dadCells = Array.from(Array(casas), () => new Array(casas));
@@ -91,8 +94,20 @@
     return Math.floor(Math.random() * ((casas-1) - 0 + 1) + 0);
   };
 
-  let changeBlock = (cell) => {
-    console.log("Click", cell);
+  let changeBlock = (cell, x , y) => {
+    console.log(document.getElementById("cell"+x+y).style);
+    if(loser){
+      return;
+    }
+    let element = document.getElementById("cell"+x+y);
+    element.style.backgroundColor = "#fff";
+    if(cell == "*"){
+      loser = true;
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 2000);
+    }
+    console.log("Click "+cell+" x"+x+" y"+y);
     
   };
 
@@ -100,16 +115,29 @@
 </script>
 
 <h2>Game</h2>
-
+{#if loser}
+  <div class="loser">
+    <h3 class="loser-text">You Loser</h3>
+  </div>
+{/if}
+{#if win}
+  <div class="win">
+    <h3>You Win</h3>
+  </div>
+{/if}
 <table>
   {#each dadCells as dc, dcI}
     <tr>
       {#each dc as sc, scI}
-        <td on:click|preventDefault={() => changeBlock(sc)}>
+        <td  on:click|preventDefault={() => changeBlock(sc, dcI, scI)}>
         {#if sc == "*"}
-        <FontAwesomeIcon icon={faBomb} />
+          <div id="cell{dcI}{scI}" class="cellBlock">
+            <span style="color: #000;"><FontAwesomeIcon icon={faBomb} /> </span>
+          </div>
         {:else}
-          {sc}
+          <div id="cell{dcI}{scI}" class="cellBlock">
+            <span style="color: #000;">{sc}</span>
+          </div>
         {/if}
         </td>
       {/each}
@@ -119,13 +147,23 @@
 
 <style>
 
+  :global(.loser){
+    margin-left: 47%;
+  }
+  :global(.loser-text){
+    color: red;
+  }
+  :global(.cellBlock){
+    background-color: #000;
+  }
 
   h2 {
-	color: #fff;
+	  color: #fff;
+    text-align: center;
   }
   table {
-   position: absolute;
-   margin-left: 35%;
+   position: relative;
+   margin-left: 40%;
    bottom: 5%;
    background-color: rgb(31, 31, 31);
    border-radius: 5px;
