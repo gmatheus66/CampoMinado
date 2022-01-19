@@ -6,6 +6,9 @@
 <p>
   Seu objetivo consiste em revelar as casas do tabuleiro sem as bombas.
 </p>
+<p>
+  O jogo e gerado de forma randomica sendo possivel jogar varias vezes com bombas em locais diferentes.
+</p>
 
 <p>
   Seu desenvolvimento foi liderado por Matheus Gonçalves, auxiliado por por Thomas Santos e Lázaro Henrique
