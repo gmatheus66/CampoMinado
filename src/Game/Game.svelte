@@ -1,4 +1,9 @@
 <script>
+  import { library } from '@fortawesome/fontawesome-svg-core';
+  import { faBomb } from '@fortawesome/free-solid-svg-icons';
+  import { FontAwesomeIcon} from 'fontawesome-svelte';
+
+  library.add(faBomb);
   const casas = 10;
   let maxNBombs = 10;
   let minNBombs = 3;
@@ -88,9 +93,7 @@
 
   let changeBlock = (cell) => {
     console.log("Click", cell);
-    // console.log(locateBombs());
-    //generate();
-    //console.log(dadCells);
+    
   };
 
   init();
@@ -102,13 +105,21 @@
   {#each dadCells as dc, dcI}
     <tr>
       {#each dc as sc, scI}
-        <td on:click|preventDefault={() => changeBlock(sc)}>{sc}</td>
+        <td on:click|preventDefault={() => changeBlock(sc)}>
+        {#if sc == "*"}
+        <FontAwesomeIcon icon={faBomb} />
+        {:else}
+          {sc}
+        {/if}
+        </td>
       {/each}
     </tr>
   {/each}
 </table>
 
 <style>
+
+
   h2 {
 	color: #fff;
   }
