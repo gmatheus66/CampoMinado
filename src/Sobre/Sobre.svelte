@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  Seu desenvolvimento foi liderado por Matheus Gonçalves, auxiliado por por Thomas Santos e Lázaro Henrique
+  Seu desenvolvimento foi liderado por Matheus Gonçalves, auxiliado por por Thomas Santos e Lazaro Henrique
 </p>
 
 <p> 
@@ -23,7 +23,7 @@
 </p>
 
 <p> 
-  Lazaro Henrique - <a href="https://github.com/lazhenri">https://github.com/lazhenri</a>
+  Lazaro Henrique Querino de Oliveira - <a href="https://github.com/lazhenri">https://github.com/lazhenri</a>
 </p> 
 
 
