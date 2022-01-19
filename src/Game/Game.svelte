@@ -10,11 +10,13 @@
   let minNBombs = 3;
   let dadCells;
   let bombs;
+  let attempts;
 
   let loser = false;
   let win = false;
 
   let init = () => {
+    attempts = new Array();
     dadCells = Array.from(Array(casas), () => new Array(casas));
     bombs = generateBombs();
     populateDad();
@@ -95,8 +97,7 @@
   };
 
   let changeBlock = (cell, x , y) => {
-    console.log(document.getElementById("cell"+x+y).style);
-    if(loser){
+    if(loser || win){
       return;
     }
     let element = document.getElementById("cell"+x+y);
@@ -106,6 +107,12 @@
       setTimeout(() => {
         window.location.href = '/';
       }, 2000);
+    }
+    if(attempts.filter(e => e.x == x && e.y == y).length == 0){
+      attempts.push({x: x, y: y});
+    }
+    if(attempts.length == ( (casas * casas) - bombs.length)){
+      win = true;
     }
     console.log("Click "+cell+" x"+x+" y"+y);
     
@@ -122,7 +129,7 @@
 {/if}
 {#if win}
   <div class="win">
-    <h3>You Win</h3>
+    <h3 class="win-text">You Win</h3>
   </div>
 {/if}
 <table>
@@ -152,6 +159,12 @@
   }
   :global(.loser-text){
     color: red;
+  }
+  :global(.win){
+    margin-left: 47%;
+  }
+  :global(.win-text){
+    color: green;
   }
   :global(.cellBlock){
     background-color: #000;
